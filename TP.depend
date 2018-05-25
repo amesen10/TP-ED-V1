@@ -1,0 +1,149 @@
+# depslib dependency file v1.0
+1526274167 source:c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\main.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	"ListaPosicionadaLSE.h"
+	"ListaPosicionadaLDE.h"
+	"ListaIndexadaLSE.h"
+
+1526193102 source:c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\src\cajas.cpp
+
+1526193315 source:c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\src\listaposicionadalse.cpp
+
+1526274788 c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\include\listaposicionadalse.h
+	"CajaS.h"
+
+1526274788 c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\include\cajas.h
+
+1526193256 source:c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\src\cajad.cpp
+
+1526237078 source:c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\src\listaposicionadalde.cpp
+
+1526274788 c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\include\listaposicionadalde.h
+	"CajaD.h"
+
+1526274788 c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\include\cajad.h
+
+1526244377 source:c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\src\listaindexadalse.cpp
+
+1526274788 c:\users\andres\documents\u\2018\ciclo i\estructuras de datos y análisis de algoritmos\tp i\etapa ii\tp\include\listaindexadalse.h
+	"CajaS.h"
+
+1526605386 source:c:\users\b61015\downloads\tp-final version\main.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	"ListaPosicionadaLSE.h"
+	"ListaPosicionadaLDE.h"
+	"ListaIndexadaLSE.h"
+	"ListaOrd_LSE.h"
+	"ListaOrd_Array.h"
+
+1526274788 c:\users\b61015\downloads\tp-final version\include\listaposicionadalse.h
+	"CajaS.h"
+
+1526274788 c:\users\b61015\downloads\tp-final version\include\cajas.h
+
+1526274788 c:\users\b61015\downloads\tp-final version\include\listaposicionadalde.h
+	"CajaD.h"
+
+1526274788 c:\users\b61015\downloads\tp-final version\include\cajad.h
+
+1526274788 c:\users\b61015\downloads\tp-final version\include\listaindexadalse.h
+	"CajaS.h"
+
+1526193256 source:c:\users\b61015\downloads\tp-final version\src\cajad.cpp
+
+1526193102 source:c:\users\b61015\downloads\tp-final version\src\cajas.cpp
+
+1526193315 source:c:\users\b61015\downloads\tp-final version\src\listaposicionadalse.cpp
+
+1526598917 c:\users\b61015\downloads\tp-final version\include\listaord_lse.h
+	"NodoL.h"
+	<iostream>
+	<string>
+
+1526592854 c:\users\b61015\downloads\tp-final version\include\nodol.h
+
+1526597311 source:c:\users\b61015\downloads\tp-final version\src\listaord_array.cpp
+	"ListaOrd_Array.h"
+
+1526605437 c:\users\b61015\downloads\tp-final version\include\listaord_array.h
+	<iostream>
+
+1526852197 source:c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\main.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	"ListaPosicionadaLSE.h"
+	"ListaPosicionadaLDE.h"
+	"ListaIndexadaLSE.h"
+	"ListaOrd_LSE.h"
+	"ListaOrd_Array.h"
+
+1526852206 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\listaposicionadalse.h
+	"CajaS.h"
+
+1526852202 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\cajas.h
+
+1526852205 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\listaposicionadalde.h
+	"CajaD.h"
+
+1526852202 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\cajad.h
+
+1526852203 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\listaindexadalse.h
+	"CajaS.h"
+
+1526852204 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\listaord_lse.h
+	"NodoL.h"
+	<iostream>
+	<string>
+
+1526852216 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\nodol.h
+
+1526852203 c:\users\jeffry\downloads\tp1-ed-master\tp1-ed-master\include\listaord_array.h
+	<iostream>
+
+1527221625 source:c:\users\crist\desktop\tp1-ed-master\main.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	"Algoritmos.h"
+	"ListaPosicionadaLSE.h"
+	"ListaPosicionadaLDE.h"
+	"ListaIndexadaLSE.h"
+	"ListaOrd_LSE.h"
+	"ListaOrd_Array.h"
+
+1527221757 c:\users\crist\desktop\tp1-ed-master\include\algoritmos.h
+	"ListaPosicionadaLSE.h"
+	"CajaS.h"
+	"CajaD.h"
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\listaposicionadalse.h
+	"CajaS.h"
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\cajas.h
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\listaposicionadalde.h
+	"CajaD.h"
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\cajad.h
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\listaindexadalse.h
+	"CajaS.h"
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\listaord_lse.h
+	"NodoL.h"
+	<iostream>
+	<string>
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\nodol.h
+
+1527202182 c:\users\crist\desktop\tp1-ed-master\include\listaord_array.h
+	<iostream>
+
+1527094892 source:c:\users\crist\desktop\tp1-ed-master\src\listaord_array.cpp
+	"ListaOrd_Array.h"
+
