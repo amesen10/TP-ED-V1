@@ -244,15 +244,16 @@ class Algoritmos
         }
 
         void QuickSortAho(ListaPosicionadaLSE Lista, CajaS<A> *minimo, CajaS<A> *maximo){
-                CajaS<A> *posPiv=EncuentrePivote(Lista, minimo, maximo);
-                if(posPiv!=nullptr){
-                    A pivote=Lista.Recuperar(posPiv);
-                    CajaS<A> *k=Particion(Lista, minimo, maximo, pivote);
-                    CajaS<A> *ptr=Lista.Anterior(k);
-                    QuickSortAho(Lista ,minimo, ptr);
-                    QuickSortAho(Lista, k, maximo);
+                if(minimo!=maximo){
+                    CajaS<A> *posPiv=EncuentrePivote(Lista, minimo, maximo);
+                    if(posPiv!=nullptr){
+                        A pivote=Lista.Recuperar(posPiv);
+                        CajaS<A> *k=Particion(Lista, minimo, maximo, pivote);
+                        CajaS<A> *ptr=Lista.Anterior(k);
+                        QuickSortAho(Lista ,minimo, ptr);
+                        QuickSortAho(Lista, k, maximo);
+                    }
                 }
-
         }
 
         CajaS<A>* Particion(ListaPosicionadaLSE Lista, CajaS<A> *minimo, CajaS<A> *maximo, A piv){
@@ -352,6 +353,16 @@ class Algoritmos
             }
         }
 
+        void UnionSinOrd(ListaPosicionadaLSE& L1, ListaPosicionadaLSE L2){
+            CajaS<A> *ptr2=L2.Primera();
+            while(ptr2!=nullptr){
+                if(!BuscarElem(L1, L2.Recuperar(ptr2))){
+                    L1.AgregarAlFinal(L2.Recuperar(ptr2));
+                }
+                ptr2=L2.Siguiente(ptr2);
+            }
+        }
+
         void Interseccion(ListaPosicionadaLSE L1, ListaPosicionadaLSE L2, ListaPosicionadaLSE& L3)
         {
             CajaS<A> *ptr1=L1.Primera();
@@ -374,6 +385,16 @@ class Algoritmos
                         {
                             ptr1=L1.Siguiente(ptr1);
                         }
+            }
+        }
+
+        void InterseccionSinOrd(ListaPosicionadaLSE L1, ListaPosicionadaLSE L2, ListaPosicionadaLSE& L3){
+            CajaS<A> *ptr2=L2.Primera();
+            while(ptr2!=nullptr){
+                if(BuscarElem(L1, L2.Recuperar(ptr2))){
+                    L3.AgregarAlFinal(L2.Recuperar(ptr2));
+                }
+                ptr2=L2.Siguiente(ptr2);
             }
         }
 
@@ -404,6 +425,20 @@ class Algoritmos
             }
         }
 
+        void EliminarL2deL1SinOrd(ListaPosicionadaLSE& L1, ListaPosicionadaLSE L2){
+            CajaS<A> *ptr=L1.Primera();
+            CajaS<A> *temp;
+            while(ptr!=nullptr){
+                if(BuscarElem(L2, L1.Recuperar(ptr))){
+                    temp=ptr;
+                    ptr=L1.Siguiente(ptr);
+                    L1.Borrar(temp);
+                }else{
+                    ptr=L1.Siguiente(ptr);
+                }
+
+            }
+        }
 
         Algoritmos(){}
         virtual ~Algoritmos(){}
