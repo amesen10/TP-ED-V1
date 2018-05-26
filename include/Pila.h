@@ -44,7 +44,7 @@ class Pila
         void Vaciar(){
             Nodo<A> *sig;
             while(inicio!=nullptr){
-                sig=inicio->ptrNext;
+                sig=inicio->ptrSig;
                 delete &inicio;
                 inicio=sig;
             }

@@ -3,6 +3,8 @@
 #include "ListaPosicionadaLSE.h"
 #include "CajaS.h"
 #include "CajaD.h"
+#include "Pila.h"
+
 //typedef CajaS* tipoPosicion;
 //Se podria hacer un tipoPosicion
 template <class A>
@@ -243,6 +245,31 @@ class Algoritmos
                 SeleccionRe(Lista, Lista.Siguiente(ptr));
         }
 
+        void SeleccionReConPila(ListaPosicionadaLSE Lista, Pila<CajaS<A>*> Pil){
+            CajaS<A> *cambio;
+            CajaS<A> *iter;
+            CajaS<A> *menor;
+            Pil.Poner(Lista.Primera());
+            while(!Pil.Vacia()){
+                cambio=Pil.Tope();
+                iter=Lista.Siguiente(cambio);
+                menor=cambio;
+                while(iter!=nullptr){
+                    if(Lista.Recuperar(menor)>Lista.Recuperar(iter)){
+                        menor=iter;
+                    }
+                    iter=Lista.Siguiente(iter);
+                }
+                Lista.Intercambiar(menor, cambio);
+                cambio=Lista.Siguiente(cambio);
+                if(cambio==Lista.Ultima()){
+                    Pil.Vaciar();
+                }else{
+                    Pil.Poner(cambio);
+                }
+            }
+        }
+
         void QuickSortAho(ListaPosicionadaLSE Lista, CajaS<A> *minimo, CajaS<A> *maximo){
                 if(minimo!=maximo){
                     CajaS<A> *posPiv=EncuentrePivote(Lista, minimo, maximo);
@@ -265,7 +292,7 @@ class Algoritmos
                     iter1=Lista.Siguiente(iter1);
                 }
                 while(Lista.Recuperar(iter2)>=piv){
-                    iter2=Lista.Siguiente(iter2);
+                    iter2=Lista.Anterior(iter2);
                 }
             }
             return iter1;

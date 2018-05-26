@@ -249,7 +249,6 @@ Elemento ListaPosicionadaLSE::Recuperar(CajaS<Elemento>* pos)
         ptr=ptr->ptrNext;
     }
     //std::cout<<ptr->elemento<<" Si ";
-    return ptr->elemento;
 }
 
 /**

@@ -43,7 +43,7 @@ int main()
 
     cout<<"L= "; l.imprimir();
     Algoritmos<int> a;
-    a.invertir(l);
+    //a.invertir(l);
     cout<<endl<<"\nL= "; a.Listar(l);
     cout<<endl<<"\nLp= "; a.Listar(lp);
 
@@ -67,13 +67,12 @@ int main()
     else
         cout<<"\nNo esta";
 
-        a.invertir(l);
         if(a.Sublista(lp, lp2))
         cout<<"\nSi es sub";
     else
         cout<<"\nNo es sub";
         //a.SeleccionIterativa(l);
-        cout<<"L= "; l.imprimir();
+       // cout<<"L= "; l.imprimir();
 
     ListaPosicionadaLSE lp1;
     lp1.Iniciar();
@@ -95,16 +94,16 @@ int main()
 //    a.Insercion(lp);
 //    a.BurbujaBi(l);
 //    a.BurbujaBi(lp1);
-    cout<<"\nL = "; a.Listar(l);
+   // cout<<"\nL = "; a.Listar(l);
     //cout<<"\nLp = "; a.Listar(lp);
     //cout<<"\nLp1 = "; a.Listar(lp1);
   //
 
-    cout<<"\nLp = "; a.Listar(lp);
-
-    cout<<"\n\nEliminarL2deL1";
-    a.EliminarL2deL1SinOrd(lp,lp);
-    cout<<"\nLp = "; a.Listar(lp);
+//    cout<<"\nLp = "; a.Listar(lp);
+//
+//    cout<<"\n\nEliminarL2deL1";
+//    a.EliminarL2deL1SinOrd(lp,lp);
+//    cout<<"\nLp = "; a.Listar(lp);
 //    cout<<"\n\nInterseccion";
 //    a.InterseccionSinOrd(l,lp,lp3);
 //    cout<<"\nLp3 = "; a.Listar(lp3);
@@ -127,15 +126,20 @@ cout<<"\n Prueba Ale: \n";
     lt.AgregarAlFinal(10);
     lt.AgregarAlFinal(18);
     lt.AgregarAlFinal(30);
-/*     CajaS<int> *x;
- *     CajaS<int> *y;
- *     x=lt.Primera();
- *     y=lt.Ultima();
- *     a.QuickSortAho(lt, x, y);
- *
- *     cout<<"\n Lista: "<<endl;
- *     lt.imprimir();
- */
+      CajaS<int> *x;
+      CajaS<int> *y;
+      x=lt.Primera();
+      y=lt.Ultima();
+      a.QuickSortAho(lt, x, y);
 
+      cout<<"\n Lista: "<<endl;
+      lt.imprimir();
+
+//    Pila<CajaS<int>*> P;
+//    P.inicio;
+//    a.SeleccionReConPila(l, P);
+
+//    cout<<"L= ";
+//    l.imprimir();
     return 0;
 }
