@@ -124,10 +124,99 @@ template <class A> class AlgoritmosLIndex
 
         }
 
-        void Burbuja(ListaIndexadaLSE L1)
+        void Burbuja(ListaIndexadaLSE L)
         {
+            int indice, num=L.NumElem();
+            bool cambiado=true;
+            while(cambiado)
+            {
+                indice=1;
+                cambiado=false;
 
+                while(indice<num)
+                {
+                    if(L.Recuperar(indice)> L.Recuperar(indice+1))
+                    {
+                        L.Intercambiar(indice, indice+1);
+                        cambiado=true;
+                    }
+                    ++indice;
+                }
+                --num;
+            }
         }
+
+        void BurbujaBi(ListaIndexadaLSE L)
+        {
+            int indice1, indice2, num=L.NumElem(), inicio=1;
+            bool cambiado=true;
+            while(cambiado)
+            {
+                indice1=1;
+                cambiado=false;
+
+                while(indice1<num)
+                {
+                    if(L.Recuperar(indice1)>L.Recuperar(indice1+1))
+                    {
+                        L.Intercambiar(indice1, indice1+1);
+                        cambiado=true;
+                    }
+                    ++indice1;
+                }
+                if(!cambiado)
+                    break;      //No hubieron cambios, ya está ordenada la lista
+                cambiado=false;
+                --num;
+                indice2=num;
+                while(indice2>inicio)
+                {
+                    if(L.Recuperar(indice2)<L.Recuperar(indice2-1))
+                    {
+                        L.Intercambiar(indice2, indice2-1);
+                        cambiado=true;
+                    }
+                    --indice2;
+                }
+                ++inicio;
+            }
+        }
+
+        void SeleccionIterativa(ListaIndexadaLSE L)
+        {
+            int indice=1, aux, num=L.NumElem(), menor;
+            while(indice<num)
+            {
+                menor=indice;
+                aux=indice+1;
+                while(aux<=num)
+                {
+                    if(L.Recuperar(menor)>L.Recuperar(aux))
+                        menor=aux;
+                    ++aux;
+                }
+                L.Intercambiar(indice, menor);
+                ++indice;
+            }
+        }
+
+        void SeleccionRe(ListaIndexadaLSE L, int indice)
+        {
+            int num=L.NumElem();
+            int menor=indice;
+            int aux=indice+1;
+            while(aux<=num)
+            {
+                if(L.Recuperar(menor)>L.Recuperar(aux))
+                    menor=aux;
+                ++aux;
+            }
+            L.Intercambiar(indice, menor);
+            if(indice+1!=num)
+                SeleccionRe(L, indice+1);
+        }
+
+
 
         AlgoritmosLIndex(){}
         virtual ~AlgoritmosLIndex(){}
