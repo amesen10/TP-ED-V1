@@ -23,6 +23,7 @@ class ListaOrd_LSE
         */
         void Iniciar(){
              PrimerElem=nullptr;
+             contador=0;
         }
          /**
         * @brief Elimina todos los elemntos existentes en la lista y luego la destruye, devolviendo todo el espacio al compilador
