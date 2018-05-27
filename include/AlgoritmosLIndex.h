@@ -1,6 +1,7 @@
 #ifndef ALGORITMOSLINDEX_H
 #define ALGORITMOSLINDEX_H
 #include "ListaIndexadaLSE.h"
+#include "Pila.h"
 #include "CajaS.h"
 
 
@@ -216,7 +217,133 @@ template <class A> class AlgoritmosLIndex
                 SeleccionRe(L, indice+1);
         }
 
+        void SeleccionReConPila(ListaIndexadaLSE L, Pila<int> P)
+        {
 
+            int indice, aux, menor, num=L.NumElem();
+            P.Poner(1);
+            while(!P.Vacia())
+            {
+                indice=P.Tope();
+                aux=indice+1;
+                menor=indice;
+                while(aux<=num)
+                {
+                    if(L.Recuperar(menor)>L.Recuperar(aux))
+                        menor=aux;
+                    ++aux;
+                }
+                L.Intercambiar(indice, menor);
+                ++indice;
+                if(indice==num-1)
+                    P.Vaciar();
+                else
+                    P.Poner(indice);
+            }
+        }
+
+        void Insercion(ListaIndexadaLSE& L)
+        {
+            int indice=2, aux, num=L.NumElem();
+            A elem;
+
+            bool cambio;
+            while(indice<=num)
+            {
+                cambio=false;
+                aux=indice-1;
+                if(L.Recuperar(indice)<L.Recuperar(aux))
+                {
+                    elem=L.Recuperar(indice);
+                    int aux2=indice;
+                    indice=aux;
+                    L.Borrar(aux2);
+
+                    if(elem<L.Recuperar(1))
+                    {
+                        L.Insertar(elem, 1);
+                        cambio=true;
+                    }
+                    while(aux>1 && !cambio)
+                    {
+                        if(L.Recuperar(aux-1)<elem && L.Recuperar(aux)>elem)
+                        {
+                            L.Insertar(elem, aux);
+                            cambio=true;
+                        }
+                        --aux;
+                    }
+                }
+                ++indice;
+            }
+        }
+
+        void Union(ListaIndexadaLSE& L1, ListaIndexadaLSE L2)
+        {
+            int indice1=1, indice2=1, num1=L1.NumElem(), num2=L2.NumElem();
+            bool insertado;
+
+                while(indice2<=num2)
+                {
+                    insertado=false;
+                    while(!insertado && indice1<=num1)
+                    {
+//                        std::cout<<"\n En L2 "<<L2.Recuperar(indice2)<<" i1: "<<indice1;
+                        if(L2.Recuperar(indice2)==L1.Recuperar(indice1))
+                        {
+                            insertado=true;
+                            ++indice1;
+                            ++indice2;
+                        }
+                        else
+                        {
+                            if(L2.Recuperar(indice2)<L1.Recuperar(indice1))
+                            {
+                                //std::cout<<"\n   Insertar pos "<<indice1<<" Elem "<<L2.Recuperar(indice1);
+                                L1.Insertar(L2.Recuperar(indice2), indice1);
+                                insertado=true;
+                                //--indice1;
+                                ++num1;
+                                ++indice2;
+                            }
+                            if(L2.Recuperar(indice2)>L1.Recuperar(indice1))
+                            {
+//                                std::cout<<"\n   "<<L2.Recuperar(indice2)<<"<"<<L1.Recuperar(indice1);
+                                ++indice1;
+                            }
+                        }
+                    }
+
+                    //++indice2;
+                    if(indice1==num1+1)
+                    {
+                        int aux=indice1;
+//                        std::cout<<"   Deberia entrar :"<<L2.Recuperar(indice2);
+                        while(indice2<=num2)
+                        {
+                            L1.Insertar(L2.Recuperar(indice2), aux);
+                            ++aux;
+                            ++indice2;
+                        }
+                    }
+                }
+//                std::cout<<"\n    num1: "<<num1<<" indice1: "<<indice1<< " indice2: "<<indice2;
+            }
+
+        void UnionSinOrd(ListaIndexadaLSE& L1, ListaIndexadaLSE L2)
+        {
+            int indice2=1, num1=L1.NumElem(), num2=L2.NumElem();
+
+            while(indice2<=num2)
+            {
+                if(!Buscar(L1, L2.Recuperar(indice2)))
+                {
+                    L1.Insertar(L2.Recuperar(indice2), num1);
+                    ++num1;
+                }
+                ++indice2;
+            }
+        }
 
         AlgoritmosLIndex(){}
         virtual ~AlgoritmosLIndex(){}

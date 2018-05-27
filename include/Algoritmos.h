@@ -361,13 +361,17 @@ class Algoritmos
                 while(!insertado && ptr1!=nullptr)
                 {
                     if(L2.Recuperar(ptr2)==L1.Recuperar(ptr1))
+                    {
                         insertado=true;
+                        ptr2=L2.Siguiente(ptr2);
+                        ptr1=L1.Siguiente(ptr1);
+                    }
 
                     if(L2.Recuperar(ptr2)<L1.Recuperar(ptr1))
                     {
                         L1.Insertar(L2.Recuperar(ptr2), ptr1);
                         insertado=true;
-                        ptr1=L1.Siguiente(ptr1);
+                        ptr2=L2.Siguiente(ptr2);
                     }
                     else
                         ptr1=L1.Siguiente(ptr1);
@@ -375,8 +379,9 @@ class Algoritmos
                 if(ptr1==nullptr)//Elementos restantes en L2 que son mayores que el último de L1
                 {
                     L1.AgregarAlFinal(L2.Recuperar(ptr2));
+                    ptr2=L2.Siguiente(ptr2);
                 }
-                ptr2=L2.Siguiente(ptr2);
+               // ptr2=L2.Siguiente(ptr2);
             }
         }
 
