@@ -94,7 +94,74 @@ class AlgoritmosListOrd
                     L1.Borrar(iter);
             }
         }
-
+        void Unionv1(ListaOrd_LSE<A> &L1, ListaOrd_LSE<A> L2){
+            A iter=L2.Primero();
+            while(iter!=L2.Ultimo()){
+                if(!Pertenece(L1, iter)){
+                    L1.Insertar(iter);
+                }
+                iter=L2.Siguiente(iter);
+            }
+            if(!Pertenece(L1, iter)){
+                    L1.Insertar(iter);
+            }
+        }
+        void Unionv2(ListaOrd_LSE<A> &L1, ListaOrd_LSE<A> L2, ListaOrd_LSE<A> &L3){
+            A iter=L2.Primero();
+            while(iter!=L2.Ultimo()){
+                if(!Pertenece(L1, iter)){
+                    L3.Insertar(iter);
+                }
+                iter=L2.Siguiente(iter);
+            }
+            if(!Pertenece(L1, iter)){
+                    L3.Insertar(iter);
+            }
+            A iter1=L1.Primero();
+            while(iter1!=L1.Ultimo()){
+                if(!Pertenece(L1, iter1)){
+                    L3.Insertar(iter1);
+                }
+                iter1=L2.Siguiente(iter1);
+            }
+            if(!Pertenece(L1, iter1)){
+                    L3.Insertar(iter1);
+            }
+        }
+        void Intersecv1(ListaOrd_LSE<A> &L1, ListaOrd_LSE<A> L2){
+            A iter=L1.Primero();
+            while(iter!=L1.Ultimo()){
+                if(!Pertenece(L2, iter)){
+                    L1.Borrar(iter);
+                }
+                iter=L1.Siguiente(iter);
+            }
+            if(!Pertenece(L2, iter)){
+                    L1.Borrar(iter);
+            }
+        }
+        void Intersecv2(ListaOrd_LSE<A> &L1, ListaOrd_LSE<A> L2){
+            A iter=L1.Primero();
+            while(iter!=L1.Ultimo()){
+                if(!Pertenece(L2, iter)){
+                    L1.Borrar(iter);
+                }
+                iter=L1.Siguiente(iter);
+            }
+            if(!Pertenece(L2, iter)){
+                    L1.Borrar(iter);
+            }
+            A iter=L2.Primero();
+            while(iter!=L2.Ultimo()){
+                if(!Pertenece(L1, iter)){
+                    L2.Borrar(iter);
+                }
+                iter=L2.Siguiente(iter);
+            }
+            if(!Pertenece(L1, iter)){
+                    L2.Borrar(iter);
+            }
+        }
     protected:
 
     private:
