@@ -7,11 +7,48 @@
 #include "ListaIndexadaLSE.h"
 #include "ListaOrd_LSE.h"
 #include "ListaOrd_Array.h"
+#include "AlgoritmosLIndex.h"
 
 using namespace std;
 
 int main()
 {
+    AlgoritmosLIndex<int> ali;
+    ListaIndexadaLSE lilse;
+    lilse.Iniciar();
+    lilse.Insertar(1, 1);
+    lilse.Insertar(5, 2);
+    lilse.Insertar(2, 3);
+    lilse.Insertar(5,2);
+    lilse.Insertar(21,1);
+
+    ListaIndexadaLSE lilse1;
+    lilse1.Iniciar();
+    lilse1.Insertar(2, 1);
+    lilse1.Insertar(5, 2);
+    lilse1.Insertar(1, 3);
+//    lilse1.Insertar(5,2);
+//    lilse1.Insertar(1,1);
+
+    cout<<"lilse: "; ali.Listar(lilse); //lilse.imprimir();
+    cout<<"\nlilse1: "; ali.Listar(lilse1);
+    ali.Simetrica(lilse)?cout<<"\nEs simetrica":cout<<"\nNo simetrica";
+
+    cout<<"\nInvertir: \nlilse: "; ali.Invertir(lilse); ali.Listar(lilse);
+
+    cout<<"\nSublista: "; ali.Sublista(lilse1, lilse)?cout<<"Si":cout<<"No";
+
+    cout<<"\n5? "; ali.Buscar(lilse, 5)?cout<<"Si":cout<<"No";
+    cout<<"\n7? "; ali.Buscar(lilse, 7)?cout<<"Si":cout<<"No";
+    cout<<"\n21? "; ali.Buscar(lilse, 21)?cout<<"Si":cout<<"No";
+
+    cout<<"\nEliminar Repetidos: \nlilse: "; ali.EliminarRepetidos(lilse); ali.Listar(lilse);
+    cout<<"\nSublista: "; ali.Sublista(lilse1, lilse)?cout<<"Si":cout<<"No";
+    cout<<"\nIguales: "; ali.Iguales(lilse,lilse)?cout<<"Si":cout<<"No";
+
+
+    cout<<endl<<endl;
+
     ListaPosicionadaLSE l;
     l.Iniciar();
     l.Insertar(5,l.Primera());
