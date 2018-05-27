@@ -193,10 +193,20 @@ void ListaPosicionadaLDE::imprimir()
 */
 void ListaPosicionadaLDE::AgregarAlFinal(Elemento elemento)
 {
-    CajaD<Elemento>* ptr=fin;
-    CajaD<Elemento> *caja=new CajaD<Elemento>(elemento,nullptr,fin);
-    fin->ptrNext=caja;
-    fin=caja;
+    if(nullptr==inicio)
+    {
+        CajaD<Elemento> *caja=new CajaD<Elemento>(elemento);
+        inicio=caja;
+        fin=caja;
+    }
+    else
+    {
+        CajaD<Elemento>* ptr=fin;
+        CajaD<Elemento> *caja=new CajaD<Elemento>(elemento,nullptr,fin);
+        fin->ptrNext=caja;
+        fin=caja;
+    }
+
 }
 
 /**
