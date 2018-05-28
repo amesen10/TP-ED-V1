@@ -345,6 +345,79 @@ template <class A> class AlgoritmosLIndex
             }
         }
 
+        void Interseccion(ListaIndexadaLSE L1, ListaIndexadaLSE L2, ListaIndexadaLSE& L3)
+        {
+            int indice1=1, indice2=1, indice3=1, num1=L1.NumElem(), num2=L2.NumElem();
+
+            while(indice1<=num1 && indice2<=num2)
+            {
+                if(L1.Recuperar(indice1)==L2.Recuperar(indice2))
+                {
+                    L3.Insertar(L1.Recuperar(indice1),indice3);
+                    ++indice1; ++indice2; ++indice3;
+                }
+                else
+                    if(L2.Recuperar(indice2)<L1.Recuperar(indice1))
+                        ++indice2;
+                    else
+                        if(L2.Recuperar(indice2)>L1.Recuperar(indice1))
+                        ++indice1;
+
+            }
+        }
+
+        void InterseccionSinOrd(ListaIndexadaLSE L1, ListaIndexadaLSE L2, ListaIndexadaLSE& L3)
+        {
+            int indice2=1, indice3=1, num2=L2.NumElem();
+
+            while(indice2<=num2)
+            {
+                if(Buscar(L1, L2.Recuperar(indice2)))
+                {
+                    L3.Insertar(L2.Recuperar(indice2), indice3);
+                    ++indice3;
+                }
+                ++indice2;
+            }
+        }
+
+        void EliminarL2deL1(ListaIndexadaLSE& L1, ListaIndexadaLSE L2)
+        {
+            int indice1=1, indice2=1, aux, num1=L1.NumElem(), num2=L2.NumElem();
+
+            while(indice1<=num1 && indice2<=num2)
+            {
+                if(L1.Recuperar(indice1)==L2.Recuperar(indice2))
+                {
+                    aux=indice1;
+//                    ++indice1;
+                    ++indice2;
+                    L1.Borrar(aux);
+                }
+                else
+                    if(L2.Recuperar(indice2)<L1.Recuperar(indice1))
+                        ++indice2;
+                    else
+                        if(L2.Recuperar(indice2)>L1.Recuperar(indice1))
+                        ++indice1;
+            }
+        }
+
+        void EliminarL2deL1SinOrd(ListaIndexadaLSE& L1, ListaIndexadaLSE L2)
+        {
+            int indice=1, num1=L1.NumElem(), aux;
+            while(indice<=num1)
+            {
+                if(Buscar(L2, L1.Recuperar(indice)))
+                {
+                    aux=indice;
+                    L1.Borrar(aux);
+                }
+                else
+                    ++indice;
+            }
+        }
+
         AlgoritmosLIndex(){}
         virtual ~AlgoritmosLIndex(){}
 
