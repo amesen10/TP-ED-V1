@@ -98,27 +98,32 @@ class Algoritmos
         }
 
         bool Sublista(ListaPosicionadaLSE Lista1, ListaPosicionadaLSE Lista2){
-            if(Lista2.NumElem()>Lista1.NumElem()){
+            if(Lista2.NumElem()<Lista1.NumElem()){
                 return false;
             }
             bool esElem=false;
             CajaS<A> *iter1=Lista1.Primera();
             CajaS<A> *iter2=Lista2.Primera();
-            while(iter2!=nullptr){
-                while(iter1!=nullptr){
-                    if(Lista1.Recuperar(iter1)==Lista2.Recuperar(iter2)){
-                        esElem=true;
+            while(iter2!=nullptr)
+            {
+                iter1=Lista1.Primera();
+                if(Lista1.Recuperar(iter1)==Lista2.Recuperar(iter2))
+                {
+                    CajaS<A> *aux=iter2;
+                    esElem=true;
+                    while(iter1!=Lista1.Ultima()&&esElem && aux!=Lista2.Ultima())
+                    {
+                        if(Lista1.Recuperar(Lista1.Siguiente(iter1))!=Lista2.Recuperar(Lista2.Siguiente(aux)))
+                            esElem=false;
+                        iter1=Lista1.Siguiente(iter1);
+                        aux=Lista2.Siguiente(aux);
                     }
-                    iter1=Lista1.Siguiente(iter1);
-                }
-                if(!esElem){
-                    return false;
-                }else{
-                    esElem=false;
+                    if(esElem)
+                        return true;
                 }
                 iter2=Lista2.Siguiente(iter2);
             }
-            return true;
+            return false;
         }
 
         void SeleccionIterativa(ListaPosicionadaLSE Lista){
