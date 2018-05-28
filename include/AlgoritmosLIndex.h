@@ -278,6 +278,70 @@ template <class A> class AlgoritmosLIndex
             }
         }
 
+        void Merge(ListaIndexadaLSE& L, int l, int m, int r)
+        {
+            int indice1=0, indice2=0, indiceL;
+            int num1=m-l+1;
+            int num2=r-m;
+
+            ListaIndexadaLSE L1, L2;
+            L1.Iniciar(); L2.Iniciar();
+
+            //Llenado de sublistas
+            while(indice1<num1)
+            {
+                L1.Insertar(L.Recuperar(l+indice1), indice1+1);
+                ++indice1;
+            }
+            while(indice2<num2)
+            {
+                L2.Insertar(L.Recuperar(m+indice2+1), indice2+1);
+                ++indice2;
+            }
+            indice1=1;
+            indice2=1;
+            indiceL=l;
+
+            while(indice1<=num1 && indice2<=num2)
+            {
+                if(L1.Recuperar(indice1)<=L2.Recuperar(indice2))
+                {
+                    L.Modificar(L1.Recuperar(indice1), indiceL);
+                    ++indice1;
+                }
+                else
+                {
+                    L.Modificar(L2.Recuperar(indice2), indiceL);
+                    ++indice2;
+                }
+                ++indiceL;
+            }
+            while(indice1<=num1)
+            {
+                L.Modificar(L1.Recuperar(indice1), indiceL);
+                ++indice1;
+                ++indiceL;
+            }
+            while(indice2<=num2)
+            {
+                L.Modificar(L2.Recuperar(indice2), indiceL);
+                ++indice2;
+                ++indiceL;
+            }
+
+        }
+
+        void MergeSort(ListaIndexadaLSE& L, int l, int r)
+        {
+            if(l<r)
+            {
+                int m=l+(r-l)/2;
+                MergeSort(L, l, m);
+                MergeSort(L, m+1, r);
+                Merge(L, l, m, r);
+            }
+        }
+
         void Union(ListaIndexadaLSE& L1, ListaIndexadaLSE L2)
         {
             int indice1=1, indice2=1, num1=L1.NumElem(), num2=L2.NumElem();
@@ -417,6 +481,8 @@ template <class A> class AlgoritmosLIndex
                     ++indice;
             }
         }
+
+
 
         AlgoritmosLIndex(){}
         virtual ~AlgoritmosLIndex(){}

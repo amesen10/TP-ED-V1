@@ -349,6 +349,103 @@ class Algoritmos
             }
         }
 
+        void Merge(ListaPosicionadaLSE &Lista, CajaS<A> *l, CajaS<A> *m, CajaS<A>* r)
+        {
+//            std::cout<<"\n  m: "<<Lista.Recuperar(m);
+            ListaPosicionadaLSE L1, L2;
+            L1.Iniciar(); L2.Iniciar();
+            CajaS<A> *ptr1=l;
+            CajaS<A> *ptr2;
+            CajaS<A> *ptr3;
+
+            while(ptr1!=m)
+            {
+//                std::cout<<"\n   "<<ptr1<<" m "<<Lista.Recuperar(m);
+                L1.AgregarAlFinal(Lista.Recuperar(ptr1));
+                ptr1=Lista.Siguiente(ptr1);
+            }
+            L1.AgregarAlFinal(Lista.Recuperar(ptr1));
+            //std::cout<<"\n   "<<ptr1<<" m "<<Lista.Recuperar(m);
+            ptr1=Lista.Siguiente(ptr1);
+//            std::cout<<"\nL1: "; L1.imprimir();
+
+
+            ptr2=ptr1;
+            while(ptr1!=r)
+            {
+                L2.AgregarAlFinal(Lista.Recuperar(ptr1));
+                ptr1=Lista.Siguiente(ptr1);
+            }
+            L2.AgregarAlFinal(Lista.Recuperar(ptr1));
+            ptr1=Lista.Siguiente(ptr1);
+//            std::cout<<"\nL1v2 : "; L2.imprimir();
+
+            ptr1=L1.Primera();
+            ptr2=L2.Primera();
+            ptr3=l;
+
+            while(ptr1!=nullptr && ptr2!=nullptr)
+            {
+
+                if(L1.Recuperar(ptr1)<=L2.Recuperar(ptr2))
+                {
+//                    std::cout<<"\n l1 : "<< L1.Recuperar(ptr1)<<" l2 : "<<L2.Recuperar(ptr2);
+                    Lista.Modificar(L1.Recuperar(ptr1), ptr3);
+                    ptr1=L1.Siguiente(ptr1);
+                }
+                else
+                {
+                    Lista.Modificar(L2.Recuperar(ptr2), ptr3);
+                    ptr2=L2.Siguiente(ptr2);
+                }
+                ptr3=Lista.Siguiente(ptr3);
+                //std::cout<<"\n       Cambio de ptr3 ";
+            }
+            while(ptr1!=nullptr)
+            {
+                Lista.Modificar(L1.Recuperar(ptr1), ptr3);
+                ptr1=L1.Siguiente(ptr1);
+                ptr3=Lista.Siguiente(ptr3);
+            }
+            while(ptr2!=nullptr)
+            {
+                Lista.Modificar(L2.Recuperar(ptr2), ptr3);
+                ptr2=L2.Siguiente(ptr2);
+                ptr3=Lista.Siguiente(ptr3);
+            }
+        }
+
+        void MergeSort(ListaPosicionadaLSE Lista, CajaS<A>* l, CajaS<A>* r)
+        {
+            if(l!=r)
+            {
+//                std::cout<<"     L:"; Lista.imprimir();
+                CajaS<A>* maux=l;
+                int mI=0;
+                while(maux!=r)
+                {
+//                    std::cout<<"\n    maux: "<<maux<<" r "<<r;
+                    ++mI;
+                    maux=Lista.Siguiente(maux);
+//                    std::cout<<"\n   SALIO "<<mI;
+                }
+                mI=mI/2;
+                int conta=1;
+//                std::cout<<"\n    mI: "<<mI<<"  "<<Lista.NumElem();
+                CajaS<A>* mpos=l;
+                while(conta<=mI)
+                {
+                    mpos=Lista.Siguiente(mpos);
+                    ++conta;
+                }
+//                std::cout<<"\n   Centro: "<<Lista.Recuperar(mpos);
+                MergeSort(Lista, l, mpos);
+                MergeSort(Lista, Lista.Siguiente(mpos), r);
+
+                Merge(Lista, l, mpos, r);
+            }
+        }
+
         void Union(ListaPosicionadaLSE& L1, ListaPosicionadaLSE L2)
         {
             CajaS<A> *ptr1=L1.Primera();
