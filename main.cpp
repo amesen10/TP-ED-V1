@@ -10,6 +10,7 @@
 #include "ListaOrd_Array.h"
 #include "AlgoritmosLIndex.h"
 #include "AlgoritmosListOrd.h"
+#include "AlgoritmosLPLDE.h"
 
 #include <stdio.h>      /* printf */
 #include <time.h>       /* clock_t, clock, CLOCKS_PER_SEC */
@@ -20,8 +21,10 @@ using namespace std;
 
 int main()
 {
-    ListaPosicionadaLSE L;
-    Algoritmos<int> a;
+//    ListaPosicionadaLSE L;
+    ListaPosicionadaLDE L;
+//    Algoritmos<int> a;
+    AlgoritmosLPLDE<int> a;
     clock_t t;
     double prom=0;
     srand(time(NULL));
@@ -56,9 +59,10 @@ int main()
 //        L.AgregarAlFinal(90987);
 //    }
     for(int x=1;x<=10;x++){
-        for(long long int i=0; i<5000; ++i)
+        for(long long int i=0; i<2500; ++i)
         {
-            L.AgregarAlFinal(rand()%1000);    //RANDOM
+//            L.AgregarAlFinal(rand()%1000);    //RANDOM
+            L.AgregarAlFinal(2500-i);              //ORDENADA
 //            L.AgregarAlFinal(i);              //ORDENADA
 //            L.AgregarAlFinal(90987);        //CONSTANTE
         }
@@ -67,9 +71,10 @@ int main()
         //Burbuja Bidireccional max
         //a.BurbujaBi(L);     // con 5000 random 667.167 s
         //    a.BurbujaBi(L);     //con 5000 ordenados 0.25 s
-        a.BurbujaBi(L);     //con 5000 iguales 0.25 s
 
-        //Burbuja original max
+        a.Burbuja(L);     //con 5000 iguales 0.25 s
+//        a.Burbuja(L);
+        //Burbuja original max0
         //    a.Burbuja(L);       // con 5000 random 598.975 s
         //    a.Burbuja(L);       //con 5000 ordenados 0.261 s
         //    a.Burbuja(L);       ////con 5000 iguales 0.267 s
